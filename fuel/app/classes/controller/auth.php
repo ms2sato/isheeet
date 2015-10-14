@@ -9,7 +9,20 @@ class Controller_Auth extends Controller
     {
       if (Auth::check()){
         Log::info('ログイン済みです');
+      }else{
+        foreach (\Auth::verified() as $driver)
+        {
+          Debug::dump($driver);
+          if (($id = $driver->get_user_id()) !== false)
+          {
+            // credentials ok, go right in
+            $current_user = Model\Auth_User::find($id[1]);
+            Session::set_flash('success', e('Welcome, '.$current_user->username));
+            Response::redirect('admin');
+          }
+        }
       }
+
 
       // 呼び出すための OAuth プロバイダを持っていない場合は出て行く
       if ($provider === null)
@@ -33,6 +46,7 @@ class Controller_Auth extends Controller
 
             // そして、コールバックを処理
             $status = $opauth->login_or_register();
+            Log::debug('[sql:'.get_called_class().']'.DB::last_query());
 
             // メッセージを表示できるように opauth 応答からプロバイダ名を取得
             $provider = $opauth->get('auth.provider', '?');
@@ -73,8 +87,6 @@ class Controller_Auth extends Controller
                     );
 
                     Debug::dump($created);exit;
-
-                    $this->link_provider();
 
                     // そして、この状態のためのリダイレクト URL を設定
                     $url = '/';
