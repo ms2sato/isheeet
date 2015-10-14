@@ -5,7 +5,7 @@
 	<thead>
 		<tr>
 			<th>Introducer id</th>
-			<th>Cachphrase</th>
+			<th>Catchphrase</th>
 			<th>Body</th>
 			<th>Image key</th>
 			<th>&nbsp;</th>
@@ -15,14 +15,13 @@
 <?php foreach ($introductions as $item): ?>		<tr>
 
 			<td><?php echo $item->introducer_id; ?></td>
-			<td><?php echo $item->cachphrase; ?></td>
+			<td><?php echo $item->catchphrase; ?></td>
 			<td><?php echo $item->body; ?></td>
 			<td><?php echo $item->image_key; ?></td>
 			<td>
 				<div class="btn-toolbar">
 					<div class="btn-group">
-						<?php echo Html::anchor('introduction/view/'.$item->id, '<i class="icon-eye-open"></i> View', array('class' => 'btn btn-default btn-sm')); ?>						<?php echo Html::anchor('introduction/edit/'.$item->id, '<i class="icon-wrench"></i> Edit', array('class' => 'btn btn-default btn-sm')); ?>						<?php echo Html::anchor('introduction/delete/'.$item->id, '<i class="icon-trash icon-white"></i> Delete', array('class' => 'btn btn-sm btn-danger', 'onclick' => "return confirm('Are you sure?')")); ?>					</div>
-				</div>
+						<?php echo Html::anchor('introduction/view/'.$item->id, '<i class="icon-eye-open"></i> View', array('class' => 'btn btn-default btn-sm')); ?>				</div>
 
 			</td>
 		</tr>
@@ -32,7 +31,4 @@
 <?php else: ?>
 <p>No Introductions.</p>
 
-<?php endif; ?><p>
-	<?php echo Html::anchor('introduction/create', 'Add new Introduction', array('class' => 'btn btn-success')); ?>
-
-</p>
+<?php endif; ?>

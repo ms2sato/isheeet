@@ -4,8 +4,8 @@
 	<strong>Introducer id:</strong>
 	<?php echo $introduction->introducer_id; ?></p>
 <p>
-	<strong>Cachphrase:</strong>
-	<?php echo $introduction->cachphrase; ?></p>
+	<strong>Catchphrase:</strong>
+	<?php echo $introduction->catchphrase; ?></p>
 <p>
 	<strong>Body:</strong>
 	<?php echo $introduction->body; ?></p>
@@ -13,5 +13,4 @@
 	<strong>Image key:</strong>
 	<?php echo $introduction->image_key; ?></p>
 
-<?php echo Html::anchor('introduction/edit/'.$introduction->id, 'Edit'); ?> |
 <?php echo Html::anchor('introduction', 'Back'); ?>

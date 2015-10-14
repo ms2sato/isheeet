@@ -1,5 +1,5 @@
 <?php
-class Controller_Introducer_Introduction extends Controller_Template
+class Controller_Introducer_Introduction extends Controller_Introducer
 {
 
 	public function action_index()
@@ -35,9 +35,11 @@ class Controller_Introducer_Introduction extends Controller_Template
 			{
 				$introduction = Model_Introduction::forge(array(
 					'introducer_id' => Input::post('introducer_id'),
-					'cachphrase' => Input::post('cachphrase'),
+					'introduced_id' => Input::post('introduced_id'),
+					'catchphrase' => Input::post('catchphrase'),
 					'body' => Input::post('body'),
 					'image_key' => Input::post('image_key'),
+					'image_content_type' => 'image/jpeg',
 				));
 
 				if ($introduction and $introduction->save())
@@ -78,7 +80,7 @@ class Controller_Introducer_Introduction extends Controller_Template
 		if ($val->run())
 		{
 			$introduction->introducer_id = Input::post('introducer_id');
-			$introduction->cachphrase = Input::post('cachphrase');
+			$introduction->catchphrase = Input::post('catchphrase');
 			$introduction->body = Input::post('body');
 			$introduction->image_key = Input::post('image_key');
 
@@ -100,7 +102,7 @@ class Controller_Introducer_Introduction extends Controller_Template
 			if (Input::method() == 'POST')
 			{
 				$introduction->introducer_id = $val->validated('introducer_id');
-				$introduction->cachphrase = $val->validated('cachphrase');
+				$introduction->catchphrase = $val->validated('catchphrase');
 				$introduction->body = $val->validated('body');
 				$introduction->image_key = $val->validated('image_key');
 

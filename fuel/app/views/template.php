@@ -7,9 +7,15 @@
 	<style>
 		body { margin: 40px; }
 	</style>
+	<link href="http://hayageek.github.io/jQuery-Upload-File/4.0.8/uploadfile.css" rel="stylesheet">
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+	<script src="http://hayageek.github.io/jQuery-Upload-File/4.0.8/jquery.uploadfile.min.js"></script>
 </head>
 <body>
 	<div class="container">
+		<?php echo Html::anchor('introduction', '自分への紹介状を見る'); ?>
+		<?php echo Html::anchor('introducer/introduction', '紹介状を作成する'); ?>
+
 		<div class="col-md-12">
 			<h1><?php echo $title; ?></h1>
 			<hr>

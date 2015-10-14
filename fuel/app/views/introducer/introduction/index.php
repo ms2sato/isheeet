@@ -5,7 +5,7 @@
 	<thead>
 		<tr>
 			<th>Introducer id</th>
-			<th>Cachphrase</th>
+			<th>Catchphrase</th>
 			<th>Body</th>
 			<th>Image key</th>
 			<th>&nbsp;</th>
@@ -15,7 +15,7 @@
 <?php foreach ($introductions as $item): ?>		<tr>
 
 			<td><?php echo $item->introducer_id; ?></td>
-			<td><?php echo $item->cachphrase; ?></td>
+			<td><?php echo $item->catchphrase; ?></td>
 			<td><?php echo $item->body; ?></td>
 			<td><?php echo $item->image_key; ?></td>
 			<td>
