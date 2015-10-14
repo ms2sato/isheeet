@@ -28,7 +28,8 @@
         "michelf/php-markdown": "1.4.0",
         "opauth/opauth": "0.4.*",
         "opauth/facebook": "dev-master",
-        "opauth/twitter": "dev-master"
+        "opauth/twitter": "dev-master",
+        "mailgun/mailgun-php": "dev-master"
     },
     "suggest": {
         "dwoo/dwoo" : "Allow Dwoo templating with the Parser package",

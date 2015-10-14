@@ -69,6 +69,8 @@ class Controller_Introducer_Introduction extends Controller_Introducer
 	{
 		is_null($id) and Response::redirect('introducer/introduction');
 
+		$this->send_mail();
+
 		if ( ! $introduction = Model_Introduction::find($id))
 		{
 			Session::set_flash('error', 'Could not find introduction #'.$id);
@@ -136,5 +138,27 @@ class Controller_Introducer_Introduction extends Controller_Introducer
 		Response::redirect('introducer/introduction');
 
 	}
+
+	private function send_mail(){
+		$email = \Email::forge();
+		$email->from(Config::get('private.default_mail_from'), 'test');
+		$email->to(Config::get('private.default_mail_to'));
+		$email->subject('件名');
+		$body = '本文';
+		$email->body($body);
+
+		try {
+		    $email->send();
+		}
+		catch (\EmailValidationFailedException $e) {
+		    $err_msg = '送信に失敗しました。';
+				Log::debug($e);
+		}
+		catch (\EmailSendingFailedException $e) {
+		    $err_msg = '送信に失敗しました。';
+				Log::debug($e);
+		}
+	}
+
 
 }

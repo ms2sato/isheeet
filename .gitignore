@@ -33,3 +33,4 @@ desktop.ini
 /fuel/app/config/crypt.php
 
 /public/upload/
+fuel/app/config/*/private.php
