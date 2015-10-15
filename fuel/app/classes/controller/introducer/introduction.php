@@ -29,6 +29,10 @@ class Controller_Introducer_Introduction extends Controller_Introducer
 	{
 		if (Input::method() == 'POST')
 		{
+			if(!Security::check_token()){
+				Response::redirect('/');
+			}
+
 			$val = Model_Introduction::validate('create');
 
 			if ($val->run())
@@ -69,7 +73,7 @@ class Controller_Introducer_Introduction extends Controller_Introducer
 	{
 		is_null($id) and Response::redirect('introducer/introduction');
 
-		$this->send_mail();
+		//$this->send_mail();
 
 		if ( ! $introduction = Model_Introduction::find($id))
 		{
@@ -85,6 +89,10 @@ class Controller_Introducer_Introduction extends Controller_Introducer
 			$introduction->catchphrase = Input::post('catchphrase');
 			$introduction->body = Input::post('body');
 			$introduction->image_key = Input::post('image_key');
+
+			if(!Security::check_token()){
+				Response::redirect('/');
+			}
 
 			if ($introduction->save())
 			{

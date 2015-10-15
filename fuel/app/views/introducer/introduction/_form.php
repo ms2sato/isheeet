@@ -1,4 +1,5 @@
 <?php echo Form::open(array("class"=>"form-horizontal")); ?>
+	<?php echo \Form::csrf(); ?>
 	<fieldset>
 		<div class="form-group">
 			<?php echo Form::label('Introducer id', 'introducer_id', array('class'=>'control-label')); ?>
