@@ -4,7 +4,25 @@ class Controller_Introducer_Introduction extends Controller_Introducer
 
 	public function action_index()
 	{
-		$data['introductions'] = Model_Introduction::find('all');
+		$query = Model_Introduction::query();
+    $total_items = $query->count();
+		$per_page = Config::get('private.default_per_page');
+
+    $pagination = Pagination::forge('introductionpages', [
+        'total_items' => $total_items,
+        'per_page'    => $per_page,
+        'uri_segment' => 'page',
+    ]);
+    $data['pagination'] = $pagination;
+
+    $data['introductions'] =
+        $query
+        ->order_by('created_at', 'desc')
+        ->limit($pagination->per_page)
+        ->offset($pagination->offset)
+        ->get();
+
+		//$data['introductions'] = Model_Introduction::find('all');
 		$this->template->title = "Introductions";
 		$this->template->content = View::forge('introducer/introduction/index', $data);
 
@@ -72,7 +90,6 @@ class Controller_Introducer_Introduction extends Controller_Introducer
 	public function action_edit($id = null)
 	{
 		is_null($id) and Response::redirect('introducer/introduction');
-
 		//$this->send_mail();
 
 		if ( ! $introduction = Model_Introduction::find($id))

@@ -20,7 +20,6 @@
  *
  * This will allow you to upgrade fuel without losing your custom config.
  */
-Config::load('private', true);
 return array(
 
 	/**

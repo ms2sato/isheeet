@@ -38,3 +38,6 @@
 	<?php echo Html::anchor('introducer/introduction/create', 'Add new Introduction', array('class' => 'btn btn-success')); ?>
 
 </p>
+<p>
+<?php echo Pagination::instance('introductionpages')->render(); ?>
+</p>

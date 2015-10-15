@@ -23,4 +23,6 @@ require COREPATH.'bootstrap.php';
 // Initialize the framework with the config file.
 \Fuel::init('config.php');
 
+// Customs
 \Lang::load('labels');
+\Config::load('private', true);
