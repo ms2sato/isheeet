@@ -1,10 +1,15 @@
 <?php
 class Controller_Introducer_Introduction extends Controller_Introducer
 {
-
 	public function action_index()
 	{
+		$catchphrase = Input::get('catchphrase');
+
 		$query = Model_Introduction::query();
+		if(isset($catchphrase)){
+			$query->where('catchphrase', 'like', '%' . $catchphrase . '%');
+		}
+
     $total_items = $query->count();
 		$per_page = Config::get('private.default_per_page');
 
@@ -21,6 +26,8 @@ class Controller_Introducer_Introduction extends Controller_Introducer
         ->limit($pagination->per_page)
         ->offset($pagination->offset)
         ->get();
+
+		Debug::dump($query->get_query()->__toString());
 
 		//$data['introductions'] = Model_Introduction::find('all');
 		$this->template->title = "Introductions";
