@@ -47,7 +47,8 @@ return array(
 		/**
 		 * Mail driver (mail, smtp, sendmail, noop)
 		 */
-		'driver' => 'mailgun',
+		//'driver' => 'mailgun',
+		'driver' => 'smtp',
 
 		/**
 		 * Whether to send as html, set to null for autodetection.
@@ -117,18 +118,17 @@ return array(
 		 * SMTP settings
 		 */
 		'smtp' => array(
-			'host'     => '',
-			'port'     => 25,
-			'username' => '',
-			'password' => '',
-			'timeout'  => 5,
-			'starttls' => false,
-		),
+	     'host' => 'ssl://smtp.gmail.com',
+	     'port' => 465,
+	     'username' => 'sndbx1234',
+	     'password' => 'sndbxtest',
+	     'timeout' => 5
+	 	),
 
 		/**
 		 * Newline
 		 */
-		'newline' => "\n",
+		'newline' => "\r\n",
 
 		/**
 		 * Attachment paths

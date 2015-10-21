@@ -1,6 +1,6 @@
 <?php
 return [
 	'common' => [
-		'title' => 'Introduction Sheeet'
+		'title' => 'isheeet - 紹介状サービス - '
 	]
 ];

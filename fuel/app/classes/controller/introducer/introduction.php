@@ -90,7 +90,7 @@ class Controller_Introducer_Introduction extends Controller_Introducer
 	public function action_edit($id = null)
 	{
 		is_null($id) and Response::redirect('introducer/introduction');
-		//$this->send_mail();
+		$this->send_mail();
 
 		if ( ! $introduction = Model_Introduction::find($id))
 		{
@@ -166,7 +166,7 @@ class Controller_Introducer_Introduction extends Controller_Introducer
 
 	private function send_mail(){
 		$email = \Email::forge();
-		$email->from(Config::get('private.default_mail_from'), 'test');
+		$email->from(Config::get('private.default_mail_from'), 'テスト配信サーバ');
 		$email->to(Config::get('private.default_mail_to'));
 		$email->subject('件名');
 		$body = '本文';
