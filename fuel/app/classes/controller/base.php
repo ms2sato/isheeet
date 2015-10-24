@@ -7,6 +7,7 @@ class Controller_Base extends Controller_template{
     $this->check_csrf();
     $this->verify_auth();
 
+    $this->template->is_logged_in = $this->is_logged_in();
     $this->template->current_user = $this->current_user();
   }
 
