@@ -3,12 +3,6 @@ class Controller_Account extends Controller_Base{
   public function action_create(){
 
     if (Input::method() == 'POST') {
-      // CSRF
-      if(!Security::check_token()){
-        Session::set_flash('error', 'csrf token invalid');
-        Response::redirect('/');
-      }
-
       $val = Model_User::validate('create');
 
       if ($val->run())
@@ -27,7 +21,7 @@ class Controller_Account extends Controller_Base{
         }
         else
         {
-          Session::set_flash('error', 'Could not save introduction.');
+          Session::set_flash('error', 'Could not save User.');
         }
       }
       else
@@ -43,12 +37,6 @@ class Controller_Account extends Controller_Base{
   public function action_login(){
 
     if (Input::method() == 'POST') {
-      // CSRF
-      if(!Security::check_token()){
-        Session::set_flash('error', 'csrf token invalid');
-        Response::redirect('/');
-      }
-
       $val = Model_User::validate('login');
       if($val->run()){
         $user = Model_User::query()
@@ -82,7 +70,7 @@ class Controller_Account extends Controller_Base{
   }
 
   private function session_ready_and_redirect($user){
-    Session::rotate(); // セッションIDを変更
+    Session::instance()->rotate(); // セッションIDを変更
     Session::set('user_id', $user->id);
     Response::redirect('/');
   }

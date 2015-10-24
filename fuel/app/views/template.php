@@ -14,12 +14,13 @@
 <body>
 	<div class="container">
 		<?php if(Session::get('user_id')) { ?>
-			<?php echo Session::get('user_id'); ?>
+			<?php echo($current_user->name); ?>
 			<?php echo Html::anchor('/account/logout', 'ログアウト'); ?>
 		<?php } else { ?>
 			<?php echo Html::anchor('/account/login', 'ログイン'); ?>
 			<?php echo Html::anchor('/account/create', '新規登録'); ?>
 		<?php } ?>
+		<?php echo Session::key(); ?>
 		<?php echo Html::anchor('introduction', '自分への紹介状を見る'); ?>
 		<?php echo Html::anchor('introducer/introduction', '紹介状を作成する'); ?>
 

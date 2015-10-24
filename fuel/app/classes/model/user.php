@@ -18,7 +18,7 @@ class Model_User extends \Orm\Model
 			'mysql_timestamp' => false,
 		),
 		'Orm\Observer_UpdatedAt' => array(
-			'events' => array('before_update'),
+			'events' => array('before_save'),
 			'mysql_timestamp' => false,
 		),
 	);
