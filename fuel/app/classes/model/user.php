@@ -32,10 +32,12 @@ class Model_User extends \Orm\Model
 		if($factory == 'create'){
 			$val->add_field('name', '名前', 'required|max_length[255]');
 			$val->add_field('profile', 'プロフィール', 'required');
+			$val->add_field('password', 'パスワード', 'required|max_length[20]|min_length[8]');
+		} else {
+			$val->add_field('password', 'パスワード', 'required|max_length[20]');
 		}
 
 		$val->add_field('email', 'E-mail', 'required|max_length[255]');
-		$val->add_field('password', 'パスワード', 'required|max_length[1024]');
 		return $val;
 	}
 }
