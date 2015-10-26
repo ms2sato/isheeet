@@ -1,5 +1,5 @@
 <?php
-class Controller_Introduction extends Controller_Template
+class Controller_Introduction extends Controller_Authenticated
 {
 
 	public function action_index()
