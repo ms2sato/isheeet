@@ -13,7 +13,7 @@
 </head>
 <body>
 	<div class="container">
-		<?php if(Session::get('user_id')) { ?>
+		<?php if($is_logged_in) { ?>
 			<?php echo($current_user->name); ?>
 			<?php echo Html::anchor('/account/logout', 'ログアウト'); ?>
 		<?php } else { ?>
