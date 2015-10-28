@@ -1,4 +1,4 @@
-<?php echo Form::open(array("class"=>"form-horizontal")); ?>
+<?php echo Form::open(array("class"=>"form-horizontal", "id"=>"main-form")); ?>
 	<?php echo \Form::csrf(); ?>
 	<fieldset>
 		<div class="form-group">
@@ -46,6 +46,7 @@ $(document).ready(function()
 	  url:"<?php echo Uri::create('uploader.json');?>",
 	  fileName:"myfile",
 		onSuccess: function(files, data, xhr){
+			$('#main-form').find('input[name=image_key]').attr('value', data.saved_as);
       $('#thumbnail').attr('src', '/upload/' + data.saved_as);
     }
 	});

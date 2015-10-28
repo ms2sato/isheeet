@@ -4,6 +4,7 @@
 	<meta charset="utf-8">
 	<title><?php echo __('common.title') . (isset($title)? ' - '.$title : ''); ?></title>
 	<?php echo Asset::css('bootstrap.css'); ?>
+	<?php echo Asset::css('main.css'); ?>
 	<style>
 		body { margin: 40px; }
 	</style>

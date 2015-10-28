@@ -12,11 +12,12 @@ class Controller_Uploader extends Controller_Rest
         Fuel::$profiling = false;
 
         // アップロード設定
-        $config = array(
+        $config = [
             'path' => DOCROOT.'upload', //TODO: あとで変える
             // 'ext_whitelist' => array('jpg', 'jpeg', 'gif', 'png'),
-            'ext_whitelist' => array('jpg', 'jpeg'),
-        );
+            'ext_whitelist' => ['jpg', 'jpeg'],
+            'randomize' => true
+        ];
         Log::debug('1');
         // アップロード
         $json = array();
